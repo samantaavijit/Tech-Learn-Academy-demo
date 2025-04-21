@@ -1,103 +1,144 @@
-import Image from "next/image";
+'use client';
+import { motion } from 'framer-motion';
+import Link from 'next/link';
+import Button from '@/components/Button';
+
+const popularCourses = [
+  {
+    title: 'JavaScript Fundamentals',
+    description: 'Master the basics of JavaScript programming',
+    level: 'Beginner',
+    duration: '8 weeks',
+    image: '/javascript.svg'
+  },
+  {
+    title: 'Python for Beginners',
+    description: 'Start your programming journey with Python',
+    level: 'Beginner',
+    duration: '10 weeks',
+    image: '/python.svg'
+  },
+  {
+    title: 'React Development',
+    description: 'Build modern web applications with React',
+    level: 'Intermediate',
+    duration: '12 weeks',
+    image: '/react.svg'
+  }
+];
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
+    <main className="flex min-h-screen flex-col items-center justify-between pt-24 relative overflow-hidden">
+      {/* Animated Tech Background Elements */}
+      <motion.div
+        className="absolute inset-0 -z-10"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+      >
+        <motion.img
+          src="/tech-elements.svg"
+          className="absolute inset-0 w-full h-full object-cover opacity-40"
+          initial={{ scale: 0.95, rotate: 0 }}
+          animate={{ scale: 1.05, rotate: 360 }}
+          transition={{ 
+            duration: 20,
+            repeat: Infinity,
+            repeatType: "reverse",
+            ease: "linear"
+          }}
         />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.js
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+      </motion.div>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+      {/* Hero Section */}
+      <div className="w-full bg-gradient-to-b from-dark-200/50 to-dark-300/50 backdrop-blur-lg py-24 sm:py-32">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="mx-auto max-w-2xl text-center"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+            <h1 className="text-4xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600 sm:text-6xl">
+              Learn Programming the Right Way
+            </h1>
+            <p className="mt-6 text-lg leading-8 text-gray-300">
+              Start your coding journey with our comprehensive courses. Learn from industry experts
+              and build real-world projects.
+            </p>
+            <div className="mt-10 flex items-center justify-center gap-x-6">
+              <Link href="/courses">
+                <Button />
+              </Link>
+              <Link href="/about">
+                <Button />
+              </Link>
+            </div>
+          </motion.div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      </div>
+
+      {/* Popular Courses Section */}
+      <section className="w-full py-24 bg-dark-200/50 backdrop-blur-lg">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="mx-auto max-w-2xl text-center">
+            <h2 className="text-3xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600 sm:text-4xl">Popular Courses</h2>
+            <p className="mt-2 text-lg leading-8 text-gray-300">
+              Choose from our most popular programming courses
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+            {popularCourses.map((course, index) => (
+              <article key={index} className="flex flex-col items-start justify-between rounded-2xl border border-dark-300 bg-dark-200/30 backdrop-blur-sm p-6 hover:shadow-xl transition-all hover:scale-105">
+                <div className="relative w-full">
+                  <div className="flex items-center gap-x-4 text-xs">
+                    <time dateTime="2020-03-16" className="text-gray-500">{course.duration}</time>
+                    <span className="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100">
+                      {course.level}
+                    </span>
+                  </div>
+                  <h3 className="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
+                    <Link href="/courses">
+                      <span className="absolute inset-0" />
+                      {course.title}
+                    </Link>
+                  </h3>
+                  <p className="mt-5 line-clamp-3 text-sm leading-6 text-gray-600">{course.description}</p>
+                </div>
+              </article>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Features Section */}
+      <section className="w-full py-24 bg-dark-300/50 backdrop-blur-lg">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            className="mx-auto max-w-2xl lg:text-center">
+            <h2 className="text-3xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600 sm:text-4xl">
+              Why Choose Tech Academy?
+            </h2>
+            <p className="mt-6 text-lg leading-8 text-gray-300">
+              We provide a comprehensive learning experience with features designed to help you succeed
+              in your programming journey.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+    </main>
   );
 }
