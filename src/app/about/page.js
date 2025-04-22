@@ -92,7 +92,7 @@ export default function About() {
               to reflect the latest industry trends and technologies.
             </p>
             <p className="text-dark-700">
-              Today, we're proud to be at the forefront of online programming education, helping
+              Today, we are proud to be at the forefront of online programming education, helping
               thousands of students launch successful careers in tech.
             </p>
           </div>
